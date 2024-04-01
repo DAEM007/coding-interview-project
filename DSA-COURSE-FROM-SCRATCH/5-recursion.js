@@ -49,6 +49,63 @@ function recursiveFactorial(num) {
 // console.log(factorial(3));
 // console.log(factorial(4));
 // console.log(factorial(5));
-console.log(recursiveFactorial(3));
-console.log(recursiveFactorial(4));
-console.log(recursiveFactorial(5));
+// console.log(recursiveFactorial(3));
+// console.log(recursiveFactorial(4));
+// console.log(recursiveFactorial(5));
+
+// === where things go wrong in recursion? ===
+
+// No/wrong base case
+// wrong returns
+// stack overflow (maximum call stack size exceeded)
+
+// === DESIGN PATTERNS IN RECURSION ===
+
+// === Helper method recursion  ===
+
+// So, the idea behind this pattern is that you have an outer function that is invoked with arguments but non-recursive and then a recursive inner function.
+
+// challenge 3 write a function that collects all the odd values of a given array of numbers
+
+// solution with helper functions
+function collectOddValues(nums) {
+  let result = [];
+
+  function helper(helperInput) {
+    if (helperInput.length === 0) return;
+    if (helperInput[0] % 2 !== 0) {
+      result.push(helperInput[0]);
+    }
+    helper(helperInput.slice(1));
+  }
+
+  helper(nums);
+
+  return result;
+}
+
+// solution with pure recursive functions
+function collectOddValuesPure(nums) {
+  let result = [];
+
+  if (nums.length === 0) return result;
+
+  if (nums[0] % 2 !== 0) {
+    result.push(nums[0]);
+  }
+
+  result = result.concat(collectOddValuesPure(nums.slice(1)));
+
+  return result;
+}
+
+// console.log(collectOddValues([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+// console.log(collectOddValuesPure([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+
+// Note: A pure recursion tips:
+
+// 1. use methods like slice, the spread operator, and the concat that makes copies of arrays so you don't mutate them.
+
+// 2. strings are immutable so you will need to use methods like slice, substr, or substring to make copies of strings.
+
+// 3. to make copies of objects use objects.assign, or the spread operator.
