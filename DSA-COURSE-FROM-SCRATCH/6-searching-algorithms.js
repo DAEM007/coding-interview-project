@@ -37,3 +37,18 @@ function binarySearch(arr, val) {
 
 // console.log(binarySearch([12, 3, 4, 5, 6, 7, 8, 9], 5));
 // console.log(binarySearch([12, 3, 4, 5, 6, 7, 8, 9], 15));
+
+// challenge: write a function that takes in two string named long and short. The function should return the number of times we find the short string in the long one.
+function naiveStringSearch(long, short) {
+  let count = 0;
+  for (let i = 0; i < long.length; i++) {
+    for (let j = 0; j < short.length; j++) {
+      if (short[j] !== long[i + j]) break;
+      if (j === short.length - 1) count += 1;
+    }
+  }
+  return count;
+}
+
+// console.log(naiveStringSearch("lorie loled", "lol"));
+// console.log(naiveStringSearch("lorie loled", "lo"));
