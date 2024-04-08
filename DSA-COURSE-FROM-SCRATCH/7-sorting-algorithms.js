@@ -78,6 +78,9 @@ function insertionSort(arr) {
 // ============= ADVANCED SORTING ALGORITHMS =================
 
 // ============= merge sort =================
+// The merge sort algorithm is simply divide, sort and merge...that's all.
+
+// now, let say we are given two sorted array. This is how we merge them.
 function merge(arr1, arr2) {
   let left = 0;
   let right = 0;
