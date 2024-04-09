@@ -77,7 +77,7 @@ function insertionSort(arr) {
 
 // ============= ADVANCED SORTING ALGORITHMS =================
 
-// ============= merge sort =================
+// ============= Merge sort =================
 // The merge sort algorithm is simply divide, sort and merge...that's all.
 
 // now, let say we are given two sorted array. This is how we merge them.
@@ -117,3 +117,71 @@ function mergeSort(arr) {
 
 // console.log(mergeSort([5, 7, 8, 6, 9, 4, 3, 5, 2, 1]));
 // Note: So, the run-time for merge sort is o(nlogn) and o(n) space.
+
+// ============= Quick sort =================
+// The quick sort algorithm is similar to the merge sort algorithm in a way.
+// However, the algorithm here is to get a pivot/partitioning index, and put it in it's
+// correct place by putting all the elements less than it to the left and the elements
+// greater than it to the right of it.
+// You do this recursively until all array are sorted.
+function quickSort(arr, start = 0, end = arr.length - 1) {
+  if (start < end) {
+    let pivotIdx = pivotHelper(arr, start, end);
+    quickSort(arr, start, pivotIdx - 1);
+    quickSort(arr, pivotIdx + 1, end);
+  }
+  return arr;
+}
+
+function pivotHelper(arr, left = 0, right = arr.length - 1) {
+  let pivot = arr[left];
+  let swapIdx = left;
+  for (let i = left + 1; i <= right; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++;
+      [arr[swapIdx], arr[i]] = [arr[i], arr[swapIdx]];
+    }
+  }
+  [arr[left], arr[swapIdx]] = [arr[swapIdx], arr[left]];
+  return left;
+}
+
+// console.log(quickSort([13, 46, 24, 52, 20, 9]));
+// Note: so the big-o of quick sort is o(NlogN) run-time and o(logN) space
+
+// ============= Radix sort =================
+// Radix sort is a special sorting algorithm that works on list of numbers
+// It never makes comparison between two elements.
+// It rather exploits the facts that information about the size of a number
+// is encoded in the number of digits...that is, more digits means a bigger number
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+function mostDigits(nums) {
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+  }
+  return maxDigits;
+}
+
+function radixSort(nums) {
+  let maxDigitCount = mostDigits(nums);
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = Array.from({ length: 10 }, () => []);
+    for (let i = 0; i < nums.length; i++) {
+      let digit = getDigit(nums[i], k);
+      digitBuckets[digit].push(nums[i]);
+    }
+    nums = [].concat(...digitBuckets);
+  }
+  return nums;
+}
+
+console.log(radixSort([23, 345, 5467, 12, 2345, 9852]));
