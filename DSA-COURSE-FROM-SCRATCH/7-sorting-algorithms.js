@@ -77,7 +77,7 @@ function insertionSort(arr) {
 
 // ============= ADVANCED SORTING ALGORITHMS =================
 
-// ============= merge sort =================
+// ============= Merge sort =================
 // The merge sort algorithm is simply divide, sort and merge...that's all.
 
 // now, let say we are given two sorted array. This is how we merge them.
@@ -117,3 +117,33 @@ function mergeSort(arr) {
 
 // console.log(mergeSort([5, 7, 8, 6, 9, 4, 3, 5, 2, 1]));
 // Note: So, the run-time for merge sort is o(nlogn) and o(n) space.
+
+// ============= Quick sort =================
+// The quick sort algorithm is similar to the merge sort algorithm in a way.
+// However, the algorithm here is to get a pivot/partitioning index, and put it in it's
+// correct place by putting all the elements less than it to the left and the elements
+// greater than it to the right of it.
+// You do this recursively until all array are sorted.
+function quickSort(arr, start = 0, end = arr.length - 1) {
+  if (start < end) {
+    let pivotIdx = pivotHelper(arr, start, end);
+    quickSort(arr, start, pivotIdx - 1);
+    quickSort(arr, pivotIdx + 1, end);
+  }
+  return arr;
+}
+
+function pivotHelper(arr, left = 0, right = arr.length - 1) {
+  let pivot = arr[left];
+  let swapIdx = left;
+  for (let i = left + 1; i <= right; i++) {
+    if (pivot > arr[i]) {
+      swapIdx++;
+      [arr[swapIdx], arr[i]] = [arr[i], arr[swapIdx]];
+    }
+  }
+  [arr[left], arr[swapIdx]] = [arr[swapIdx], arr[left]];
+  return left;
+}
+
+// console.log(quickSort([13, 46, 24, 52, 20, 9]));
