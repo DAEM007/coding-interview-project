@@ -147,3 +147,41 @@ function pivotHelper(arr, left = 0, right = arr.length - 1) {
 }
 
 // console.log(quickSort([13, 46, 24, 52, 20, 9]));
+// Note: so the big-o of quick sort is o(NlogN) run-time and o(logN) space
+
+// ============= Radix sort =================
+// Radix sort is a special sorting algorithm that works on list of numbers
+// It never makes comparison between two elements.
+// It rather exploits the facts that information about the size of a number
+// is encoded in the number of digits...that is, more digits means a bigger number
+function getDigit(num, i) {
+  return Math.floor(Math.abs(num) / Math.pow(10, i)) % 10;
+}
+
+function digitCount(num) {
+  if (num === 0) return 1;
+  return Math.floor(Math.log10(Math.abs(num))) + 1;
+}
+
+function mostDigits(nums) {
+  let maxDigits = 0;
+  for (let i = 0; i < nums.length; i++) {
+    maxDigits = Math.max(maxDigits, digitCount(nums[i]));
+  }
+  return maxDigits;
+}
+
+function radixSort(nums) {
+  let maxDigitCount = mostDigits(nums);
+  for (let k = 0; k < maxDigitCount; k++) {
+    let digitBuckets = Array.from({ length: 10 }, () => []);
+    for (let i = 0; i < nums.length; i++) {
+      let digit = getDigit(nums[i], k);
+      digitBuckets[digit].push(nums[i]);
+    }
+    nums = [].concat(...digitBuckets);
+  }
+  return nums;
+}
+
+console.log(radixSort([23, 345, 5467, 12, 2345, 9852]));
