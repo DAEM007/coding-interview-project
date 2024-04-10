@@ -33,7 +33,7 @@ class Person {
   }
 }
 
-// let damilola = new Person("Damilola", "Emmanuel", "Software engineer");
+let damilola = new Person("Damilola", "Emmanuel", "Software engineer");
 // console.log(damilola.introduce());
 // console.log(damilola.engineeringLevel());
 // console.log(damilola.engineeringLevel());
@@ -69,9 +69,9 @@ class Animal {
 let tom = new Animal("Tom", "Cat");
 let scott = new Animal("Scott", "DOG");
 let cobra = new Animal("King Cobra", "sNAke");
-console.log(tom.introduce());
-console.log(tom.sound());
-console.log(scott.introduce());
-console.log(scott.sound());
-console.log(cobra.introduce());
-console.log(cobra.sound());
+// console.log(tom.introduce());
+// console.log(tom.sound());
+// console.log(scott.introduce());
+// console.log(scott.sound());
+// console.log(cobra.introduce());
+// console.log(cobra.sound());
