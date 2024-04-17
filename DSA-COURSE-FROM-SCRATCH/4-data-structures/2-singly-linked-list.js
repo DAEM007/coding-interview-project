@@ -36,7 +36,7 @@ class SinglyLinkedList {
   pop() {
     if (!this.head) return undefined;
     let curr = this.head;
-    let prev = this.tail;
+    let prev = curr;
     while (curr.next) {
       prev = curr;
       curr = curr.next;
