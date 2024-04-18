@@ -36,15 +36,65 @@ class DoublyLinkedList {
   pop() {
     if (this.length === 0) return undefined;
     let poppedNode = this.tail;
-    this.tail = poppedNode.prev;
-    this.tail.next = null;
-    poppedNode.prev = null;
     if (this.length === 1) {
       this.head = null;
       this.tail = null;
+    } else {
+      this.tail = poppedNode.prev;
+      this.tail.next = null;
+      poppedNode.prev = null;
     }
     this.length--;
     return poppedNode;
+  }
+  shift() {
+    if (this.length === 0) return undefined;
+    let oldHead = this.head;
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = oldHead.next;
+      this.head.prev = null;
+      oldHead.next = null;
+    }
+    this.length--;
+    return oldHead;
+  }
+  unshift(val) {
+    let node = new Node(val);
+    if (this.length === 0) {
+      this.head = node;
+      this.tail = node;
+    } else {
+      this.head.prev = node;
+      node.next = this.head;
+      this.head = node;
+    }
+    this.length++;
+    return this;
+  }
+  get(index) {
+    if (index < 0 || index > this.length - 1) return undefined;
+    let mid = Math.floor(this.length / 2);
+    let count;
+    let curr;
+    if (index <= mid) {
+      count = 0;
+      curr = this.head;
+      while (count !== index) {
+        curr = curr.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      curr = this.tail;
+      while (count !== index) {
+        curr = curr.prev;
+        count--;
+      }
+    }
+    return curr;
   }
 }
 
@@ -54,6 +104,6 @@ list.push(2);
 list.push(3);
 list.push(4);
 list.push(5);
-console.log(list);
-console.log(list.pop());
-console.log(list);
+list.push(6);
+// console.log(list);
+console.log(list.get(1));
