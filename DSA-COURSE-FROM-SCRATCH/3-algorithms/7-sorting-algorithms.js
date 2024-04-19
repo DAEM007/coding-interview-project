@@ -124,15 +124,6 @@ function mergeSort(arr) {
 // correct place by putting all the elements less than it to the left and the elements
 // greater than it to the right of it.
 // You do this recursively until all array are sorted.
-function quickSort(arr, start = 0, end = arr.length - 1) {
-  if (start < end) {
-    let pivotIdx = pivotHelper(arr, start, end);
-    quickSort(arr, start, pivotIdx - 1);
-    quickSort(arr, pivotIdx + 1, end);
-  }
-  return arr;
-}
-
 function pivotHelper(arr, left = 0, right = arr.length - 1) {
   let pivot = arr[left];
   let swapIdx = left;
@@ -144,6 +135,15 @@ function pivotHelper(arr, left = 0, right = arr.length - 1) {
   }
   [arr[left], arr[swapIdx]] = [arr[swapIdx], arr[left]];
   return left;
+}
+
+function quickSort(arr, start = 0, end = arr.length - 1) {
+  if (start < end) {
+    let pivotIdx = pivotHelper(arr, start, end);
+    quickSort(arr, start, pivotIdx - 1);
+    quickSort(arr, pivotIdx + 1, end);
+  }
+  return arr;
 }
 
 // console.log(quickSort([13, 46, 24, 52, 20, 9]));
