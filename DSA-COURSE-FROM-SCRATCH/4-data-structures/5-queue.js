@@ -52,8 +52,8 @@ class Queue {
     return this.size;
   }
   dequeue() {
-    let temp = this.first;
     if (this.size === 0) return null;
+    let temp = this.first;
     if (this.size === 1) {
       this.last = null;
     }
