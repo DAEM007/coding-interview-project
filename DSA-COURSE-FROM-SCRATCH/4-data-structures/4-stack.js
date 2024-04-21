@@ -1,6 +1,6 @@
 // ============= STACKS AND QUEUES =================
 
-// stacks and queues are both for data collection. They both principles of operations guiding them.
+// stacks and queues are both for data collection. They both have principles of operations guiding them.
 
 // === what is a stack? ===
 // A stack data structure operates on the principle of last-in first-out (LIFO) / or first-in last-out (FILO)
@@ -68,7 +68,7 @@ class Stack {
     }
     this.first = this.first.next;
     this.size--;
-    return temp;
+    return temp.val;
   }
 }
 
