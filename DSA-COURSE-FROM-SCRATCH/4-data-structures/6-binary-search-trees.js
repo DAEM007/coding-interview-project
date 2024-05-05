@@ -52,3 +52,19 @@
 // ==== Binary search trees - deep dive ====
 
 // Binary search trees are sorted such that... every node to the left of the parent node is always less than the parent...while every node to the right of the parent node is greater than the parent.
+
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+}
+
+let tree = new BinarySearchTree();
