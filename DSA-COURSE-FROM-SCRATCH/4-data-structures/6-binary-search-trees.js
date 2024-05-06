@@ -110,6 +110,9 @@ class BinarySearchTree {
   }
 }
 
+// Note: Insertion and Searching(find) on Binary Search Tree(BST) is o(logN) for both best and average
+// case. However, it's NOT guaranteed for worst case cos of the structure of the BST.
+
 let tree = new BinarySearchTree();
 // tree.insert(10);
 // tree.insert(5);
