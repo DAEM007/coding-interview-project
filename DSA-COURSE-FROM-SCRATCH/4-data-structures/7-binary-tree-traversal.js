@@ -101,15 +101,33 @@ class BinarySearchTree {
     traverse(this.root);
     return data;
   }
+  DFSInorder() {
+    let data = [];
+    function traverse(node) {
+      if (node.left) traverse(node.left);
+      data.push(node.val);
+      if (node.right) traverse(node.right);
+      return;
+    }
+    traverse(this.root);
+    return data;
+  }
 }
 
+// Note: So, when you want to decide which to use between DFS and BFS...notice that it actually depends on
+// the scenerio...so our particular concern is space and not time cos they both take same amount of time.
+// So, In Summary, when you have a really wide tree...you want to consider a DFS as it would take up less
+// space in memory compared to a BFS...BUT when we have a long height tree...you want to consider a
+// BFS as it would take up less time in memory than DFS.
+
 let tree = new BinarySearchTree();
-tree.insert(10);
-tree.insert(6);
-tree.insert(15);
-tree.insert(3);
-tree.insert(8);
-tree.insert(20);
-console.log(tree.BFS());
-console.log(tree.DFSPreorder());
-console.log(tree.DFSPostorder());
+// tree.insert(10);
+// tree.insert(6);
+// tree.insert(15);
+// tree.insert(3);
+// tree.insert(8);
+// tree.insert(20);
+// console.log(tree.BFS());
+// console.log(tree.DFSPreorder());
+// console.log(tree.DFSPostorder());
+// console.log(tree.DFSInorder());
