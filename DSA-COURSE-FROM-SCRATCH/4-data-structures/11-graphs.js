@@ -1,7 +1,7 @@
 // ============= GRAPHS =================
 
 // === what are graphs? ===
-// A graph data structure is simply a collection of nodes(vertices or points) and connections.
+// A graph data structure is simply a collection of nodes(vertices or points) and connections (edges).
 // They could either be DIRECTED OR UNDIRECTED.
 
 // === Applications of graph ===
