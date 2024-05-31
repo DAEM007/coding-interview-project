@@ -69,6 +69,7 @@ class Graph {
           dfs(neighbor);
         }
       }
+      return;
     }
     dfs(vertex);
     return result;
