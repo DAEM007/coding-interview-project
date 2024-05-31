@@ -74,6 +74,24 @@ class Graph {
     dfs(vertex);
     return result;
   }
+  depthFirstIterative(vertex) {
+    let stack = [];
+    let result = [];
+    let visited = {};
+    stack.push(vertex);
+    while (stack.length !== 0) {
+      let currentVertex = stack.pop();
+      if (!visited[currentVertex]) {
+        visited[currentVertex] = true;
+        result.push(currentVertex);
+        for (let i = 0; i < this.adjacencyList[currentVertex].length; i++) {
+          let neighbor = this.adjacencyList[currentVertex][i];
+          stack.push(neighbor);
+        }
+      }
+    }
+    return result;
+  }
 }
 
 let graph = new Graph();
@@ -100,4 +118,5 @@ console.log(graph);
 //        \   /
 //          F
 
-console.log(graph.depthFirstRecursive("A"));
+// console.log(graph.depthFirstRecursive("A"));
+console.log(graph.depthFirstIterative("A"));
