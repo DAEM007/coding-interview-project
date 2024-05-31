@@ -92,24 +92,47 @@ class Graph {
     }
     return result;
   }
+  breadthFirstIterative(vertex) {
+    let queue = [];
+    let result = [];
+    let visited = {};
+    queue.push(vertex);
+    while (queue.length !== 0) {
+      let currentVertex = queue.shift();
+      if (!visited[currentVertex]) {
+        visited[currentVertex] = true;
+        result.push(currentVertex);
+        for (let i = 0; i < this.adjacencyList[currentVertex].length; i++) {
+          let neighbor = this.adjacencyList[currentVertex][i];
+          if (!visited[neighbor]) {
+            queue.push(neighbor);
+          }
+        }
+      }
+    }
+    return result;
+  }
 }
 
 let graph = new Graph();
-graph.addVertex("A");
-graph.addVertex("B");
-graph.addVertex("C");
-graph.addVertex("D");
-graph.addVertex("E");
-graph.addVertex("F");
-graph.addEdge("A", "B");
-graph.addEdge("A", "C");
-graph.addEdge("B", "D");
-graph.addEdge("C", "E");
-graph.addEdge("D", "E");
-graph.addEdge("D", "F");
-graph.addEdge("E", "F");
-console.log(graph);
-// Expected result is as follows:
+// graph.addVertex("A");
+// graph.addVertex("B");
+// graph.addVertex("C");
+// graph.addVertex("D");
+// graph.addVertex("E");
+// graph.addVertex("F");
+// graph.addEdge("A", "B");
+// graph.addEdge("A", "C");
+// graph.addEdge("B", "D");
+// graph.addEdge("C", "E");
+// graph.addEdge("D", "E");
+// graph.addEdge("D", "F");
+// graph.addEdge("E", "F");
+// console.log(graph);
+/* 
+  We would use the illustration below for the dfs traversal
+  Expected result is as follows:
+*/
 //          A
 //        /   \
 //       B     C
@@ -119,4 +142,36 @@ console.log(graph);
 //          F
 
 // console.log(graph.depthFirstRecursive("A"));
-console.log(graph.depthFirstIterative("A"));
+// console.log(graph.depthFirstIterative("A"));
+// graph.addVertex("A");
+// graph.addVertex("B");
+// graph.addVertex("C");
+// graph.addVertex("D");
+// graph.addVertex("E");
+// graph.addVertex("F");
+// graph.addEdge("A", "B");
+// graph.addEdge("A", "E");
+// graph.addEdge("B", "C");
+// graph.addEdge("B", "D");
+// graph.addEdge("C", "D");
+// graph.addEdge("D", "E");
+// graph.addEdge("D", "F");
+// graph.addEdge("E", "F");
+// console.log(graph);
+/* 
+  We would use the illustration below for the bfs traversal
+  Expected result is as follows:
+*/
+
+/*
+    A
+   / \
+  /   \
+B       E
+|\     / |
+| \   /  |
+C  \ /   F
+  \ D /
+*/
+
+// console.log(graph.breadthFirstIterative("A"));
