@@ -12,8 +12,8 @@
 
 /*
     We can use dynamic programming when there are:
-    1. optimal sub-structure present.
-    2. overlapping sub-problems.
+    1. overlapping sub-problems.
+    2. optimal sub-structure present.
 */
 
 // === overlapping sub-problems ===
@@ -22,4 +22,11 @@
     A problem is said to have overlapping sub-problem if it can be broken down into
     sub-problems which are re-used several times. A very good example is the fibonacci 
     sequence.
+*/
+
+// === optimal sub-structure ===
+
+/*
+    A problem is said to have optimal sub-structure if the optimal solution can be 
+    obtained/constructed from the optimal solutions of the sub-problems.
 */
