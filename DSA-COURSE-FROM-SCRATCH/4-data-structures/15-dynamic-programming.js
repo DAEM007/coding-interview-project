@@ -30,3 +30,18 @@
     A problem is said to have optimal sub-structure if the optimal solution can be 
     obtained/constructed from the optimal solutions of the sub-problems.
 */
+
+/*
+    Note: So, one of the crux of dynamic programming is to use past problems to solve future
+    problems. There's a very beautiful quote for it as we would highlight below:
+
+    "Those who cannot remember the past are condemned to repeat it"  - :)
+*/
+
+// === Introduction to Memoization ===
+
+// === what is memoization? ===
+
+/*
+    
+*/
