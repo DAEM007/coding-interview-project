@@ -87,6 +87,8 @@ function fibMemoized(n, memo = []) {
 
 /*
     Note: The algorithm above runs at o(N) run-time and o(N) space.
+
+    Also, this method utilizes what is called the top-down approach
 */
 
 /*
@@ -96,4 +98,32 @@ function fibMemoized(n, memo = []) {
 
     Now, the quote we mentioned earlier makes sense, we are not condemned to repeat the past cos we
     can remember it...You can now see how memoization helps us in dynamic programming.
+*/
+
+// === Introduction to Tabulation ===
+
+// === what is Tabulation? ===
+
+/*
+    Tabulation stores a previous result in a table...usually done with iteration.
+*/
+
+/*
+    Recall, that we utilized the top-bottom approach in solving this problem...let's look at 
+    the bottom-up approach....tabulation is one that can help us implement this approach.
+*/
+
+function fibTabulated(n) {
+  if (n <= 2) return 1;
+  let fibNums = [0, 1, 1];
+  for (i = 3; i <= n; i++) {
+    fibNums[i] = fibNums[i - 1] + fibNums[i - 2];
+  }
+  return fibNums[n];
+}
+
+// console.log(fibTabulated(1477));
+
+/* 
+    Note: The solution above has a o(N) run-time and o(N) space as well.
 */
