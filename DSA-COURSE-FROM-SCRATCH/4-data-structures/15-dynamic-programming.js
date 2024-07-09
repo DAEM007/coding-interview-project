@@ -53,6 +53,10 @@ function fib(n) {
 // console.log(fib(5));
 
 /*
+    Note: The algorithm above runs at o(2^N) run-time and o(N) space.
+*/
+
+/*
     Note: One thing to note about this function is how it can get very slow pretty quickly...
     The question is why?
     The reason is simple...You would realize that as n grows, the recursive function performs 
@@ -80,6 +84,10 @@ function fibMemoized(n, memo = []) {
 }
 
 // console.log(fibMemoized(100));
+
+/*
+    Note: The algorithm above runs at o(N) run-time and o(N) space.
+*/
 
 /*
     Note: Do you observe how faster the algorithm became by utilizing memoization...You can now
